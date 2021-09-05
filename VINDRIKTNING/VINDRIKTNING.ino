@@ -3,7 +3,7 @@
 
 #include <SoftwareSerial.h>
 unsigned int serialRxBuf[21];
-static const uint8_t PIN_UART_RX = 10; // D0 on Wemos D1 Mini
+static const uint8_t PIN_UART_RX = 10; //
 static const uint8_t PIN_UART_TX = 11; //
 int a = 0;
 int data;
