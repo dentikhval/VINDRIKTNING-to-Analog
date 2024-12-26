@@ -1,13 +1,14 @@
 # VINDRIKTNING Air quality sensor
-IKEA - VINDRIKTNING Air quality sensor data read by Arduino Nano
+Thank you sparx266 for the original code. Good place to start but the missing addition of new byte to buffer was surprising.
 
-A place to store my files for data logging of air quality using the  VINDRIKTNING Air quality sensor from Ikea.
+I have added a frame verification mechanism to confirm we are receiving useful payloads, and a small sanity check to verify the readings are reasonable.
 
-The first sketch is very basic and reads a software serial port to give an average value.
+Arduino Nano is connected to the VINDRIKTNING board on pins: 
+GND to board GND, 5V to 5V
+Arduino Pin D2 set as Software Serial RX and connected to VINDRIKTNING board pin RFST (second from the side of the board where the SMD cap is)
 
-The next file (running on a Wemos D1 mini Pro) adds an OLED to display the values returned by the sensor.
-Software serial is created on D5 and a level converter is used.
+On the other side, Arduino is connected to a DC-DC converter with 24V input and 5.1V output. 
 
-![OLED](https://user-images.githubusercontent.com/20041111/132402870-7700e710-97c5-4fb3-8d70-6fc378d0b541.jpg)
-
-There is also a BMP280 temp and pressure sensor.  BMP280 is not the best choice of temperature sensor! :-)
+For analog output I am using a cool DAC board PW1VA01, which creates an analog output from PWM inputs.
+It is connected to GND and uses 24V input power. 
+Arduino pin D8 is connected to PW1VA01 PWM input.
